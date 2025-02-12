@@ -91,6 +91,9 @@
   .margin-tb {
     @apply my-20;
   }
+  .outline-orange-button {
+    @apply hover:bg-orange bg-transparent border-2 border-orange px-5 py-1 uppercase font-semibold rounded-full;
+  }
 }
 
 @layer components {

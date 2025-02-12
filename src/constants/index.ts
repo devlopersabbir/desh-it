@@ -46,3 +46,6 @@ export const slideItem = [
   },
 ];
 export type SlideItem = (typeof slideItem)[0];
+export const dishMenuItem = ["Burger", "Pizza", "Salad", "Soup", "Drinks"];
+
+export * from "./dish";

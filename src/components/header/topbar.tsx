@@ -1,12 +1,11 @@
 import { ReactNode } from "react";
 import { Clock1Icon, LocateIcon, PhoneIcon, SearchIcon } from "lucide-react";
-import Wrapper from "../provider/wrapper";
 
 const Topbar = () => {
   const handleSearch = () => {};
   return (
     <div className="flex justify-between items-center border-b-2">
-      <div className="flex space-x-4 py-2">
+      <div className="flex space-x-4 py-3">
         {/* address */}
         <Item
           icon={<LocateIcon className="text-orange" size={15} />}
