@@ -51,3 +51,6 @@ export const dishMenuItem = ["Burger", "Pizza", "Salad", "Soup", "Drinks"];
 
 export * from "./dish";
 export * from "./chef";
+export * from "./gallery";
+export * from "./location";
+export * from "./working-hour";

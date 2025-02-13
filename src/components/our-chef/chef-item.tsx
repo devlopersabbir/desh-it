@@ -32,7 +32,7 @@ const ChefItem = ({ item }: Props) => {
 };
 export default ChefItem;
 
-const socialIcons = {
+export const socialIcons = {
   facebook: <FacebookIcon className="text-orange" size={24} />,
   x: <TwitterIcon className="text-orange" size={24} />,
   linkedin: <LinkedinIcon className="text-orange" size={24} />,
