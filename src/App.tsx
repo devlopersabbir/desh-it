@@ -1,8 +1,9 @@
-import Hero from "./components/hero/Hero";
+import Hero from "./components/hero";
 import About from "./components/about";
 import OurMenu from "./components/our-menu";
 import OurChef from "./components/our-chef";
 import Booking from "./components/booking";
+import Gallery from "./components/gallery";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <OurMenu />
       <OurChef />
       <Booking />
+      <Gallery />
     </div>
   );
 }
