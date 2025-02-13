@@ -1,7 +1,6 @@
 import { workingHour } from "@/constants";
 import Wrapper from "../provider/wrapper";
 import { MailIcon, MapPinCheckInside, PhoneIcon } from "lucide-react";
-import CopyRights from "./copy-rights";
 
 const BottomFooter = () => {
   return (

@@ -1,13 +1,7 @@
 import { center } from "@/constants";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
-import { useState } from "react";
-
-// Type for the map object
-type GoogleMapInstance = google.maps.Map | null;
 
 const Footer = () => {
-  const [map, setMap] = useState<GoogleMapInstance>(null);
-
   // Load Google Maps API
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -18,7 +12,6 @@ const Footer = () => {
   // Handle map load
   const onLoad = (map: google.maps.Map) => {
     // Set map object in state once it's loaded
-    setMap(map);
 
     // Set bounds to fit the center
     const bounds = new window.google.maps.LatLngBounds(center);
