@@ -7,6 +7,7 @@ import Gallery from "./components/gallery";
 import Footer from "./components/footer";
 import BottomFooter from "./components/footer/bottom_footer";
 import CopyRights from "./components/footer/copy-rights";
+import BackToTop from "./components/global/back-to-top";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Footer />
       <BottomFooter />
       <CopyRights />
+      <BackToTop />
     </div>
   );
 }

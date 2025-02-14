@@ -1,7 +1,8 @@
 import { DishMenu } from "@/constants";
 import { ZoomIn } from "lucide-react";
 import PreviewDialog from "../dialog";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import useScrollAnimations from "@/hooks";
 
 type Props = {
   item: DishMenu;
@@ -9,19 +10,18 @@ type Props = {
 
 const CardItem = ({ item }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const handleClose = (open: boolean) =>
-    open ? setIsOpen(false) : setIsOpen(true);
+  const handleClose = () => setIsOpen((prev) => !prev);
 
   return (
     <div
-      className="flex-between h-auto border-[1px] border-orange relative flex-col gap-6 p-5 group cursor-pointer hover:bg-orange transition-all duration-300"
-      onClick={() => setIsOpen(true)}
+      className="flex-between h-auto border-[1px] border-orange relative flex-col lg:gap-6 gap-3 lg:p-5 p-2 group cursor-pointer hover:bg-orange transition-all duration-300 w-full hover:shadow-lg"
+      onClick={handleClose}
     >
-      <div className="w-52 h-52 rounded-full shadow-2xl p-2 -mt-32 relative flex-center">
-        <div className="absolute rounded-full w-full h-full group-hover:bg-[#00800080] border-2 flex-center transition-all duration-300">
+      <div className="w-52 h-52 rounded-full shadow-2xl p-2 -mt-32 relative flex-center overflow-hidden">
+        <div className="absolute rounded-full w-full h-full group-hover:bg-[#237723bd] border-2 flex-center transition-all duration-300">
           <ZoomIn
             size={25}
-            className="group-hover:text-white transition-all duration-300"
+            className="group-hover:text-white group-hover:scale-150 scale-0 transition-all duration-300"
           />
         </div>
         <img

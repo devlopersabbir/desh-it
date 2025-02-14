@@ -19,6 +19,11 @@
   object-fit: cover;
 }
 
+.chef-slider {
+  width: 100%;
+  max-width: 100%;
+}
+
 .chef-slide > .swiper-pagination-bullet {
   border: 2px solid #fff;
   width: 15px;
