@@ -1,7 +1,8 @@
-import { menuItem } from "@/constants";
-import Wrapper from "../provider/wrapper";
-import Topbar from "./topbar";
-import React from "react";
+import { menuItem } from '@/constants'
+import Wrapper from '../provider/wrapper'
+import Topbar from './topbar'
+import React from 'react'
+import { AlignRight } from 'lucide-react'
 
 const Header = () => {
   return (
@@ -11,7 +12,8 @@ const Header = () => {
         {/* main header */}
         <div className="flex-between w-full py-4">
           <img src="/logo.png" alt="" />
-          <ul className="flex-center space-x-4 ">
+          <AlignRight size={30} className="lg:hidden block text-white cursor-pointer" />
+          <ul className="lg:flex-center space-x-4 hidden">
             {menuItem.map((item, i) => (
               <React.Fragment key={i}>
                 <li className="text-base font-semibold text-white uppercase hover:text-orange hover:border-b-2 hover:border-orange border-b-2 border-transparent transition-all duration-300 cursor-pointer">
@@ -26,6 +28,6 @@ const Header = () => {
         </div>
       </header>
     </Wrapper>
-  );
-};
-export default Header;
+  )
+}
+export default Header
