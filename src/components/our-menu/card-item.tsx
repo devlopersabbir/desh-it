@@ -1,8 +1,7 @@
 import { DishMenu } from "@/constants";
 import { ZoomIn } from "lucide-react";
 import PreviewDialog from "../shared";
-import { useRef, useState } from "react";
-import useScrollAnimations from "@/hooks";
+import { useState } from "react";
 
 type Props = {
   item: DishMenu;

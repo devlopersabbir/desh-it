@@ -1,4 +1,4 @@
-import { Dialog, DialogClose, DialogContent } from "../ui/dialog";
+import { Dialog, DialogContent } from "../ui/dialog";
 
 type Props = {
   image: string;

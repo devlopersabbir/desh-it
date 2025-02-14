@@ -1,5 +1,4 @@
 import { menuItem } from "@/constants";
-import Wrapper from "../provider/wrapper";
 import Topbar from "./topbar";
 import React, { useRef, useState, useEffect } from "react";
 import { AlignRight } from "lucide-react";
