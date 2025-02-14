@@ -27,12 +27,5 @@ export const dishMenu = [
     info: "Crispy fries with a pinch of sea salt.",
     price: 120,
   },
-  {
-    image: "/beef-burger-lg.jpg",
-    name: "Veggie Burger",
-    size: "regular",
-    info: "A vegetarian delight with a savory patty and fresh veggies.",
-    price: 350,
-  },
 ];
 export type DishMenu = (typeof dishMenu)[0];

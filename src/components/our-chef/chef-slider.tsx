@@ -15,22 +15,27 @@ const ChefSlider = () => {
   return (
     <Swiper
       breakpoints={{
-        1024: {
+        960: {
+          slidesPerView: 4,
+          spaceBetween: 8,
+        },
+        720: {
           slidesPerView: 3,
-          spaceBetween: 30,
+          spaceBetween: 6,
         },
-        768: {
+        540: {
           slidesPerView: 2,
-          spaceBetween: 20,
+          spaceBetween: 4,
         },
-        0: {
+        320: {
           slidesPerView: 1,
-          spaceBetween: 10,
+          spaceBetween: 2,
         },
       }}
       loop={true}
       pagination={{
         clickable: true,
+        bulletClass: "chef-bullet-position",
       }}
       modules={[Pagination]}
       className="chef-slider"

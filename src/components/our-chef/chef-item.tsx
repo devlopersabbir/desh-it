@@ -1,17 +1,24 @@
 import { Chef, SocialProvider } from "@/constants";
+import useScrollAnimations from "@/hooks";
 import {
   FacebookIcon,
   LinkedinIcon,
   TwitterIcon,
   YoutubeIcon,
 } from "lucide-react";
+import { useRef } from "react";
 
 type Props = {
   item: Chef;
 };
 const ChefItem = ({ item }: Props) => {
+  const chefRef = useRef<HTMLDivElement>(null);
+  useScrollAnimations([chefRef]);
   return (
-    <div className="flex-center w-full max-h-fit hover:cursor-pointer group relative">
+    <div
+      className="flex-center w-full max-h-fit hover:cursor-pointer group relative"
+      ref={chefRef}
+    >
       <div className="image w-full h-full overflow-hidden">
         <img
           className="group-hover:scale-110 transition-all duration-500"

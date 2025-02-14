@@ -1,6 +1,6 @@
 import { DishMenu } from "@/constants";
 import { ZoomIn } from "lucide-react";
-import PreviewDialog from "../dialog";
+import PreviewDialog from "../shared";
 import { useRef, useState } from "react";
 import useScrollAnimations from "@/hooks";
 

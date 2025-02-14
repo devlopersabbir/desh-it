@@ -3,11 +3,11 @@ import BookingForm from "./booking-form";
 
 const Booking = () => {
   return (
-    <Wrapper classname="w-full margin-tb bg-[url(/reservation.jpg)] bg-no-repeat bg-cover bg-fixed py-10">
+    <Wrapper classname="w-full margin-tb bg-[url(/reservation.jpg)] bg-no-repeat bg-cover bg-fixed py-7 lg:py-10">
       <div className="flex-center gap-5">
-        <div className="w-1/2"></div>
+        <div className="lg:w-1/2"></div>
         {/* right side book */}
-        <div className="w-1/2 flex flex-col gap-2 p-10 bg-orange">
+        <div className="lg:w-1/2 w-full flex flex-col gap-2 lg:p-10 p-7 bg-orange">
           <h1 className="text-3xl font-semibold uppercase">
             online reservation
           </h1>
