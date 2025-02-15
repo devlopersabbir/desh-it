@@ -1,28 +1,20 @@
-import { Chef, SocialProvider } from "@/constants";
-import useScrollAnimations from "@/hooks";
-import {
-  FacebookIcon,
-  LinkedinIcon,
-  TwitterIcon,
-  YoutubeIcon,
-} from "lucide-react";
-import { useRef } from "react";
+import { Chef, SocialProvider } from '@/constants'
+import { socialIcons } from '@/constants/topbar'
+import useScrollAnimations from '@/hooks'
+import { useRef } from 'react'
 
 type Props = {
-  item: Chef;
-};
+  item: Chef
+}
 const ChefItem = ({ item }: Props) => {
-  const chefRef = useRef<HTMLDivElement>(null);
-  useScrollAnimations([chefRef]);
+  const chefRef = useRef<HTMLDivElement>(null)
+  useScrollAnimations([chefRef])
   return (
-    <div
-      className="flex-center w-full max-h-fit hover:cursor-pointer group relative"
-      ref={chefRef}
-    >
+    <div className="flex-center w-full max-h-fit hover:cursor-pointer group relative" ref={chefRef}>
       <div className="image w-full h-full overflow-hidden">
         <img
           className="group-hover:scale-110 transition-all duration-500"
-          src={item.image ?? "/chef_1.jpg"}
+          src={item.image ?? '/chef_1.jpg'}
           alt="chef"
         />
       </div>
@@ -30,40 +22,27 @@ const ChefItem = ({ item }: Props) => {
         <h2 className="text-2xl text-white font-semibold">{item.name}</h2>
         <div className="flex-center space-x-4 pb-16">
           {item.socials.map((social, index) => (
-            <SocialNetwork
-              provider={social.provider}
-              url={social.url}
-              key={index}
-            />
+            <SocialNetwork provider={social.provider} url={social.url} key={index} />
           ))}
         </div>
       </div>
     </div>
-  );
-};
-export default ChefItem;
+  )
+}
+export default ChefItem
 
-export const socialIcons = {
-  facebook: <FacebookIcon className="text-orange" size={24} />,
-  x: <TwitterIcon className="text-orange" size={24} />,
-  linkedin: <LinkedinIcon className="text-orange" size={24} />,
-  youtube: <YoutubeIcon className="text-orange" size={24} />,
-};
 type SocialProps = {
-  url: string;
-  provider: SocialProvider;
-};
+  url: string
+  provider: SocialProvider
+}
 const SocialNetwork = ({ provider, url }: SocialProps) => {
-  const Icon = socialIcons[provider];
+  const Icon = socialIcons[provider]
 
   if (Icon) {
     return (
-      <div
-        onClick={() => window.open(url, "_blank")}
-        className="cursor-pointer"
-      >
+      <div onClick={() => window.open(url, '_blank')} className="cursor-pointer">
         {Icon}
       </div>
-    );
+    )
   }
-};
+}

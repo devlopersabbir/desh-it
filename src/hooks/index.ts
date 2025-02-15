@@ -1,13 +1,10 @@
-import { useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
-const useScrollAnimations = (
-  elements: React.RefObject<HTMLElement | null>[],
-  duration = 0.3
-) => {
+const useScrollAnimations = (elements: React.RefObject<HTMLElement | null>[], duration = 0.3) => {
   useEffect(() => {
     const context = gsap.context(() => {
       elements.forEach((elementRef) => {
@@ -16,23 +13,23 @@ const useScrollAnimations = (
             elementRef.current,
             {
               opacity: 0,
-              y: 100,
+              y: 100
             },
             {
               opacity: 1,
               y: 0,
               duration,
               scrollTrigger: {
-                trigger: elementRef.current,
-              },
+                trigger: elementRef.current
+              }
             }
-          );
+          )
         }
-      });
-    });
+      })
+    })
 
-    return () => context.revert();
-  }, [elements]);
-};
+    return () => context.revert()
+  }, [elements, duration])
+}
 
-export default useScrollAnimations;
+export default useScrollAnimations
