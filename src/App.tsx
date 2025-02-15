@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Hero from './components/hero'
 import About from './components/about'
 import OurMenu from './components/our-menu'
@@ -9,8 +9,11 @@ import Footer from './components/footer'
 import BottomFooter from './components/footer/bottom_footer'
 import CopyRights from './components/footer/copy-rights'
 import BackToTop from './components/global/back-to-top'
+import Loading from './components/shared/loading'
 
 function App() {
+  const [loading, setLoading] = useState(true)
+
   const sectionRefs: Record<string, React.RefObject<HTMLElement | null>> = {
     home: useRef<HTMLElement>(null),
     about: useRef<HTMLElement>(null),
@@ -20,7 +23,20 @@ function App() {
     gallery: useRef<HTMLElement>(null),
     contact: useRef<HTMLElement>(null)
   }
+  useEffect(() => {
+    const handleLoad = () => setLoading(false)
 
+    if (document.readyState === 'complete') {
+      handleLoad() // If the page is already loaded
+    } else {
+      window.addEventListener('load', handleLoad)
+    }
+
+    return () => window.removeEventListener('load', handleLoad)
+  }, [])
+  if (loading) return <Loading />
+  document.title =
+    'Butazzo Pizza - Restaurant, Cafe, Fast Food business HTML5 Responsive, CSS3 One Page Template'
   return (
     <div>
       <Hero sectionRefs={sectionRefs} />
