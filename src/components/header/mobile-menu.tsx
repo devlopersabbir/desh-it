@@ -1,17 +1,17 @@
-import { Sheet, SheetContent } from "@/components/ui/sheet";
-import { menuItem } from "@/constants";
-import { topbardata } from "@/constants/topbar";
-import { SearchIcon } from "lucide-react";
-import React from "react";
-import { Item } from "./topbar";
+import { Sheet, SheetContent } from '@/components/ui/sheet'
+import { menuItem } from '@/constants'
+import { topbardata } from '@/constants/topbar'
+import { SearchIcon } from 'lucide-react'
+import React from 'react'
+import { Item } from './topbar'
 type Props = {
-  isOpen: boolean;
-  onClose: (open: boolean) => void;
-};
+  isOpen: boolean
+  onClose: (open: boolean) => void
+}
 const MobileMenu = ({ isOpen, onClose }: Props) => {
-  const handleSearch = () => {};
+  const handleSearch = () => {}
   return (
-    <Sheet open={isOpen} onOpenChange={(open) => onClose(open)}>
+    <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="bg-orange border-none w-full">
         <img src="/logo.png" alt="log" className="mb-10" />
         <div className="relative left-0 top-0 bottom-0 overflow-hidden py-1 mb-5">
@@ -38,16 +38,11 @@ const MobileMenu = ({ isOpen, onClose }: Props) => {
         </ul>
         <div className="flex flex-col mt-5 gap-2">
           {topbardata.map((item, i) => (
-            <Item
-              data={item}
-              textStyle={"text-white"}
-              iconStyle={"text-green-300"}
-              key={i}
-            />
+            <Item data={item} textStyle={'text-white'} iconStyle={'text-green-300'} key={i} />
           ))}
         </div>
       </SheetContent>
     </Sheet>
-  );
-};
-export default MobileMenu;
+  )
+}
+export default MobileMenu

@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { Button } from '../ui/button'
 
 const BookingForm = () => {
   return (
@@ -45,6 +45,6 @@ const BookingForm = () => {
         </Button>
       </div>
     </div>
-  );
-};
-export default BookingForm;
+  )
+}
+export default BookingForm

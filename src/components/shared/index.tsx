@@ -1,22 +1,32 @@
-import { Dialog, DialogContent } from "../ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle
+} from '@/components/ui/alert-dialog'
+import { X } from 'lucide-react'
 
 type Props = {
-  image: string;
-  isOpen: boolean;
-  onClose: (open: boolean) => void; // Expecting the state setter function from the parent
-};
+  image: string
+  open: boolean
+  onOpenChange: (open: boolean) => void
+}
 
-const PreviewDialog = ({ image, isOpen, onClose }: Props) => {
-  const handleDialogClose = (open: boolean) => {
-    onClose(open);
-  };
+function PreviewDialog({ image, open, onOpenChange }: Props) {
+  console.log('open: ', open)
   return (
-    <Dialog open={isOpen} onOpenChange={handleDialogClose}>
-      <DialogContent className="w-full h-auto">
-        <img className="w-full h-full" src={image} alt="image" />
-      </DialogContent>
-    </Dialog>
-  );
-};
-
-export default PreviewDialog;
+    <AlertDialog open={open} onOpenChange={onOpenChange}>
+      <AlertDialogContent className="max-w-3xl lg:p-5 p-2.5">
+        <AlertDialogHeader>
+          <AlertDialogTitle className="hidden">Are</AlertDialogTitle>
+          <AlertDialogDescription className="hidden">This</AlertDialogDescription>
+        </AlertDialogHeader>
+        <X size={30} className="cursor-pointer text-dark_green absolute right-2 top-2" />
+        <img alt="image" className="w-full" src={image || '/placeholder.svg'} />
+      </AlertDialogContent>
+    </AlertDialog>
+  )
+}
+export default PreviewDialog

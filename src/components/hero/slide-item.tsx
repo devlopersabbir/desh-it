@@ -1,21 +1,19 @@
-import { useRef } from "react";
-import type { SlideItem } from "@/constants";
-import { Button } from "../ui/button";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { useRef } from 'react'
+import type { SlideItem } from '@/constants'
+import { Button } from '../ui/button'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 type Props = {
-  item: SlideItem;
-  isActive: boolean;
-};
+  item: SlideItem
+  isActive: boolean
+}
 
 const SlideItem = ({ item, isActive }: Props) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    const elements = containerRef.current?.querySelectorAll(
-      ".bottom-to-top-animation"
-    );
+    const elements = containerRef.current?.querySelectorAll('.bottom-to-top-animation')
     if (elements) {
       gsap.fromTo(
         elements,
@@ -24,22 +22,23 @@ const SlideItem = ({ item, isActive }: Props) => {
           y: 0,
           opacity: 1,
           duration: 1,
-          stagger: 0.2,
-          ease: "power3.out",
+          // stagger: 10,
+          delay: 0.3,
+          ease: 'power3.out'
         }
-      );
+      )
     }
-  }, [isActive, item]);
+  }, [isActive, item])
 
   return (
     <div
       ref={containerRef}
-      className="flex flex-col lg:flex-row gap-4 lg:gap-8"
+      className="flex flex-col md:flex-center lg:flex-row gap-4 md:gap-5 lg:gap-8"
     >
       {/* image */}
-      <div className="relative w-full lg:w-1/2 overflow-hidden bottom-to-top-animation">
+      <div className="relative w-full md:w-1/2 overflow-hidden bottom-to-top-animation">
         <img
-          src={item.image || "/placeholder.svg"}
+          src={item.image || '/placeholder.svg'}
           alt="banner"
           className="w-full h-auto object-cover"
         />
@@ -49,22 +48,18 @@ const SlideItem = ({ item, isActive }: Props) => {
         </div>
       </div>
       {/* details */}
-      <div className="flex flex-col justify-center items-center lg:items-end gap-4 lg:gap-5 lg:w-1/2 lg:-mt-16">
+      <div className="flex flex-col justify-center items-center lg:items-end gap-4 lg:gap-5 lg:w-1/2 lg:-mt-12 md:-mt-7 -mt-2">
         <div className="flex flex-col items-center lg:items-end justify-center gap-2 lg:gap-3 bottom-to-top-animation">
-          <h1 className="text-3xl lg:text-5xl text-center lg:text-right">
-            {item.title}
-          </h1>
+          <h1 className="text-3xl lg:text-5xl text-center lg:text-right">{item.title}</h1>
           <span className="bg-orange w-1/4 h-1" />
         </div>
-        <p className="text-center lg:text-right bottom-to-top-animation">
-          {item.description}
-        </p>
+        <p className="text-center lg:text-right bottom-to-top-animation">{item.description}</p>
         <Button className="hover:bg-orange bg-transparent border-2 border-orange px-4 py-2 lg:px-5 lg:py-2.5 text-sm lg:text-base uppercase font-semibold rounded-full transition-colors duration-300 bottom-to-top-animation">
           Make Reservation
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SlideItem;
+export default SlideItem

@@ -1,64 +1,77 @@
-import { menuItem } from "@/constants";
-import Topbar from "./topbar";
-import React, { useRef, useState, useEffect } from "react";
-import { AlignRight } from "lucide-react";
-import MobileMenu from "./mobile-menu";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { menuItem } from '@/constants'
+import Topbar from './topbar'
+import React, { useRef, useState, useEffect } from 'react'
+import { AlignRight } from 'lucide-react'
+import MobileMenu from './mobile-menu'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
-const Header = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const headerRef = useRef<HTMLHeadElement>(null);
-  const openClickHandler = () => setIsOpen((prev) => !prev);
+const Header = ({
+  sectionRefs
+}: {
+  sectionRefs: Record<string, React.RefObject<HTMLElement | null>>
+}) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const headerRef = useRef<HTMLHeadElement>(null)
+  const openClickHandler = () => setIsOpen((prev) => !prev)
 
   useEffect(() => {
     // intial header
     gsap.set(headerRef.current, {
-      position: "relative",
+      position: 'relative',
       top: 0,
-      width: "100%",
-    });
+      width: '100%'
+    })
 
     // Create the scroll trigger animation
     ScrollTrigger.create({
-      start: "top -120",
+      start: 'top -120',
       end: 99999,
       toggleClass: {
-        className: "fixed-header",
-        targets: headerRef.current,
+        className: 'fixed-header',
+        targets: headerRef.current
       },
       onEnter: () => {
         gsap.to(headerRef.current, {
-          position: "fixed",
+          position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
-          backgroundColor: "rgba(12, 128, 39, 0.8)",
-          backdropFilter: "blur(10px)",
-          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+          backgroundColor: 'rgba(12, 128, 39, 0.8)',
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
           duration: 1,
-          ease: "power2.out",
-          zIndex: 10,
-        });
+          ease: 'power2.out',
+          zIndex: 10
+        })
       },
       onLeaveBack: () => {
         gsap.to(headerRef.current, {
-          position: "relative",
-          backgroundColor: "transparent",
-          backdropFilter: "none",
-          boxShadow: "none",
+          position: 'relative',
+          backgroundColor: 'transparent',
+          backdropFilter: 'none',
+          boxShadow: 'none',
           duration: 1,
-          ease: "power2.out",
-        });
-      },
-    });
+          ease: 'power2.out'
+        })
+      }
+    })
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
-
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
+  const handleScrollToSection = (section: string) => {
+    if (sectionRefs[section]?.current) {
+      gsap.to(window, {
+        duration: 1,
+        scrollTo: { y: sectionRefs[section].current, offsetY: 80 },
+        ease: 'power2.out'
+      })
+    }
+  }
   return (
     <header ref={headerRef}>
       <div className="container-6 mx-auto">
@@ -76,7 +89,10 @@ const Header = () => {
           <ul className="lg:flex-center space-x-4 hidden">
             {menuItem.map((item, i) => (
               <React.Fragment key={i}>
-                <li className="text-base font-semibold text-white uppercase hover:text-orange hover:border-b-2 hover:border-orange border-b-2 border-transparent transition-all duration-300 cursor-pointer">
+                <li
+                  onClick={() => handleScrollToSection(item.toLowerCase())}
+                  className="text-base font-semibold text-white uppercase hover:text-orange hover:border-b-2 hover:border-orange border-b-2 border-transparent transition-all duration-300 cursor-pointer"
+                >
                   {item}
                 </li>
                 {i < menuItem.length - 1 && (
@@ -89,7 +105,7 @@ const Header = () => {
         <MobileMenu isOpen={isOpen} onClose={openClickHandler} />
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
